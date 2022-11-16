@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogify : Sports</title>
+ 
+</head>
+
+{%block title %} {{post.title}}Page {% endblock %}
+<Body>
+{%block content%}
+{%for post in posts reversed %}
+<div>
+        <h2> {{post.title}}<h2>
+        <img> {{post.image}} <img>
+        <h5> {{post.written_at}}<h5>
+        <h5> {{post.body}} <h5>
+        <small> By: {{post.author.firstname}}<small>
+</div>
+{%end for %}
+
+
+{%endblock%}
+</body>
+</html>

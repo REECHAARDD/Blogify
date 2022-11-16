@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogify : Business</title>
+</head>
+{%block content %}
+<body>
+    <header>
+        <a href="#">Business News</a>
+    </header>
+    <div class="container">
+        {{for # in #  reversed}}
+        <div class="div_1">
+            <img {{post.images}}>
+            <h2>{{post.title}}</h2>
+            <h5>{{post.written_at}}</h5>
+            <p>{{post.body}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+{%endblock content %}
+</html>

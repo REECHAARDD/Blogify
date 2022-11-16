@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+{%block content%}
+<body>
+    <div class="container">
+        <a href="{% url 'index'%}" class="home_link">Home</a>
+        <h2>Login to your Account&nbsp<i class="fas fa-video"></i></h2>
+        {%for message in messages %}
+        <h3>{{message}}</h3>
+        {% endfor %}
+        <form action="POST">
+            {% csrf_token %}
+            <div class="input-box">
+                <input type="text" placeholder="Blog Username" required>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <div class="input-box button">
+                <input type="submit" value="Login" required>
+            </div>
+            <div class="text">
+                <h3>Don't have an account?&nbsp;<a href="{% url 'signup' %}">Register Here</a></h3>
+            </div>
+        </form>
+    </div>
+</body>
+{%endblock content%}
+</html>
