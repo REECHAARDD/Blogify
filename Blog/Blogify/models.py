@@ -6,11 +6,12 @@ from email.policy import EmailPolicy, default
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
 class SignUp(models.Model):
     firstName = models.CharField(max_length=30,null=False)
     LastName = models.CharField(max_length=30,null=False)
     username = models.CharField(max_length=10,null=False)
-    Email = models.EmailField(EmailPolicy,max_length=50,null=False)
+    email = models.EmailField(EmailPolicy,max_length=50,null=False)
     password = models.CharField(max_length=10,null=False)
     confirmpassword = models.CharField(max_length=10,null=False)
 
@@ -26,6 +27,7 @@ class Preview(models.Model):
     
 class post(models.Model):
     title = models.CharField(max_length=150)
+    # tags = TaggableManager()
     image = models.ImageField(upload_to="Posts", null=True)
     Written_at  = models.DateTimeField("Date published",default=datetime.now,blank=False)
     image =  models.ImageField( upload_to="Posts", height_field=None, width_field=None, max_length=None,null=True )
@@ -37,5 +39,7 @@ class post(models.Model):
     
     def get_absolute_url(self):
         return reverse("Home.html")
+
+
 
  

@@ -4,57 +4,63 @@ from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.models import  auth
+from django.contrib.auth.models import  User,auth
 from django.forms import PasswordInput
-from .models import post
+from .models import post, signin
 from django.views.generic import ListView,CreateView,DetailView
+from django.forms import *
+from .models import SignUp
 
 def index(request):
     return render(request,'index.html')
 
 def Signup(request):
     if request.method == 'POST':
-        Firstname = request.POST['Firstnamee']
+        Firstname = request.POST['Firstname']
         Lastname = request.POST['Lastname']
         username = request.POST['username']
-        Email = request.POST['Email']
+        email = request.POST['email']
         Password = request.POST['Password']
-        ConfirmPassword = request.POST['Confirm Password']
+        ConfirmPassword = request.POST['ConfirmPassword']
 
         if Password == ConfirmPassword:
-            if user.object.filter(email=email).exists():
+            if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email Taken')
-                return redirect(request,'Signup.html')
-            elif user.objects.filter(Username=username).exists():
+                return redirect('signup')
+            if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username Taken')
-                return redirect(request,'Signup.html')
+                return redirect('signup')
             else:
-                user = user.object.create_user(username=username,EmailL=Email,PASSWORD=Password)
+                user = User.objects.create_user(username=username,email=email,password=Password)
                 user.save();
-                return redirect(request,'Signin.html')
+                messages.success(request,'<h3>You are now registered </h3>')
+                return redirect('Signin')
         else:
-            messages.info(request, 'Password Not Matching')
-            return redirect('Signup.html')
+            messages.info(request, 'Password Not Matching!!')
+            return redirect('signup')
     else:
-        return render(request, 'Signup.html')
-
+        return render(request, 'signUp.html')
 
 def Signin(request):
     if request.method == 'POST':
-        Username = request.POST['username']
+        username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate (Username=Username,password=password)
+        user = auth.authenticate (username=username,password=password)
+
         if user is not None :
             auth.login(request,user)
-            return redirect('Homepage.html')
+            return redirect('Home')
         else :
-            messages.info(request,'credential invalid ')
-            return redirect ('Signin.html')
+            messages.info(request,'Username or Password is wrong! ')
+            return redirect ('Signin')
     else :
-        return render (request,'signin.html')
+        return render (request,'Signin.html')
 
-
+def logout(request):
+    auth.logout(request)
+    return redirect ('')
+ 
 def preview(request):
     posts = post.objects.all()
     return render(request,'preview.html',{'posts':posts})
@@ -63,22 +69,19 @@ def post(request,pk):
     posts = post.objects.get(id=pk)
     return render(request,'post.html',{'posts':posts})
 
-def logout(request):
-    auth.logout(request)
-    return redirect (request,'index.html')
-
-
 class Createblog(CreateView):
     model = post
     template_name = "Createblog.html"
     fields = "__all__"
     
 
-class Blog (ListView):
-    model = post
-    template_name ="Homepage.html"
-    context_object_name = 'posts'
+# class Blog (ListView):
+#     model = post
+#     template_name ="Homepage.html"
+#     context_object_name = 'posts'
 
+def Blog (request):
+    return render(request,'Homepage.html')
 
 class Articledetailview(DetailView):
     model = post
@@ -114,3 +117,4 @@ def business(request):
 
 def music(request):
     return render(request, 'music.html')
+

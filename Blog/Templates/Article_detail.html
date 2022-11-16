@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block title %} {{ post.title}} {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == post.Author.id %}
+
+<a href = "{% url 'updatepost' post.pk %}">Edit</a>
+
+<a href ="{% url 'deletepost' post.pk%}"> Delete </a>
+
+    {% endif %}
+{% endif %}
+
+<br>
+<p>
+    {{ post.body}}
+</p>
+
+{% endblock content %}

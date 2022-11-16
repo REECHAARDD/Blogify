@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block title%} Create A New Category Post {% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1> Add Category <h1>
+<br>
+<div class ="form-group">
+    <form method="POST">
+        {% crsf_token %}
+        {{ form.as_p}}
+        <button> Add Category </button>
+    </form>
+
+{% else %}
+    You are not allowed to Add post 
+{% endif %}
+</div>
+

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blogify.com</title>
     {% block css_files %}
-    <link rel="stylesheet" href= "{% static 'css4/style.css' %}" >
+    <link rel="stylesheet" href= "{% static 'blog/style.css' %}" >
     {% endblock %}
   </head>
 {% block content %}
@@ -23,7 +23,6 @@
         <a href="{% url 'Signin' %}">Sign in</a>
         <a href="{% url 'ContactUs' %}">Contact</a>
         <a href="{% url 'about' %}">About</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <p>Menu</p>
         </a>
 
@@ -45,6 +44,22 @@
             Portable
           </a>
         </div>
+        <div class="home-section">
+          <div class="first_box">
+            <a href="#">
+              Osun Indigene dies over bread as he chokes on carbohydrates
+            </a>
+          </div>
+          <div class="second_box">
+            <a href="#">
+              Benin demon cries after he drank anointing oil instead of Zobo
+            </a>
+          </div>
+          <div class="third_box">
+            <a href="#">
+              Thee Legionite makes waves as he commences new Blogify project
+            </a>
+          </div>
 
         <!-------------------------------------------- SOCIAL ICONS DIV --------------------------------------->
         <div class="social_icons">
@@ -73,48 +88,46 @@
         </div>
         <!-------------------------------------------------- COLLAPSIBLE SECTION ENDS ----------------------------------------------------------->
 
-        <!------------------------------- SLIDESHOW SECTION BEGINS HERE ----------------------------------------->
-
         <div class="slideshow_container">
           <!-- Full-width images with number text -->
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img1.png"
+            src="{% static 'Images/img1.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
 
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img2.png"
+            src="{% static 'Images/img2.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
 
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img3.png"
+            src="{% static 'img3.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
 
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img4.png"
+            src="{% static 'Images/img4.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
 
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img5.png"
+              src="{% static 'Images/img5.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
 
           <div class="mySlides">
             <img
-              src="/Blogify/Images/img6.png"
+            src="{% static 'Images/img6.png'%}"
               style="width: 30%; margin-left: 35%"
             />
           </div>
@@ -133,7 +146,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img1.png"
+                src="{% static 'Images/img1.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(1)"
                 alt="Human Boy"
@@ -142,7 +155,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img2.png"
+                src="{% static 'Images/img2.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(2)"
                 alt="A logo"
@@ -151,7 +164,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img3.png"
+                src="{% static 'Images/img3.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(3)"
                 alt="Magician's Hat"
@@ -160,7 +173,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img4.png"
+                src="{% static 'Images/img4.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(4)"
                 alt="A random cube"
@@ -169,7 +182,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img5.png"
+                src="{% static 'Images/img5.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(5)"
                 alt="An oddly large camera"
@@ -178,7 +191,7 @@
             <div class="column">
               <img
                 class="demo cursor"
-                src="/Blogify/Images/img6.png"
+                src="{% static 'Images/img6.png'%}"
                 style="width: 100%"
                 onclick="currentSlide(6)"
                 alt="A notebook"
@@ -186,6 +199,7 @@
             </div>
           </div>
         </div>
+
 
         <!---------------------------------- SLIDESHOW SECTION ENDS HERE ----------------------------------------->
 
@@ -206,7 +220,6 @@
       <!--------------------------------------------------------------------- HOME SECTION ENDS ------------------------------------------->
     </div>
     <!----------------------------------------------------------- CONTAINER ENDS -------------------------------------------->
-    <script src="/Blogify/JavaScript/script.js"></script>
   </body>
   {% endblock content %}
 </html>

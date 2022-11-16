@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogify : Entertainment</title>
+    {% block css_files %}
+    <link rel="stylesheet" href= "{% static 'blog/entertainment.css' %}" >
+    {% endblock %}
+  </head>
 </head>
 {%block content %}
 <body>
@@ -14,7 +18,7 @@
     </header>
     <div class="container">
         <div class="div_1">
-            <img src="/Blogify/Images/img1.png" class="images">
+            <img src="{% static '/Blogify/Images/img6.png'%}"class="images">
             <a href="#">Lorem ipsum, dolor sit amet consectetur adipisicing elit. In laudantium similique aspernatur?</a>
         </div>
     </div>
